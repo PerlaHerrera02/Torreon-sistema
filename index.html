@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Carnicería El Torreón - Sistema Web</title>
+  <style>
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      background-color: #f7f7f7;
+      margin: 0;
+      padding: 0;
+    }
+    header {
+      background-color: #a62828;
+      color: white;
+      padding: 20px;
+      text-align: center;
+    }
+    main {
+      max-width: 900px;
+      margin: auto;
+      padding: 20px;
+    }
+    section {
+      background-color: #fff;
+      margin-bottom: 30px;
+      padding: 20px;
+      border-radius: 10px;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+    }
+    h2 {
+      color: #a62828;
+      margin-top: 0;
+    }
+    label {
+      display: block;
+      margin-top: 10px;
+      font-weight: bold;
+    }
+    input, select {
+      width: 100%;
+      padding: 8px;
+      margin-top: 5px;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+    }
+    button {
+      margin-top: 15px;
+      background-color: #a62828;
+      color: white;
+      border: none;
+      padding: 10px 15px;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+    button:hover {
+      background-color: #c12f2f;
+    }
+    .output {
+      background-color: #eee;
+      padding: 10px;
+      margin-top: 10px;
+      border-radius: 5px;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>Carnicería El Torreón - Sistema de Gestión</h1>
+  </header>
+  <main>
+    <section>
+      <h2>Registro de Venta</h2>
+      <label for="productoVenta">Producto vendido:</label>
+      <select id="productoVenta">
+        <option>Sirloin</option>
+        <option>Arrachera</option>
+        <option>Chuleta</option>
+        <option>Pollo entero</option>
+      </select>
+      <label for="cantidadVenta">Cantidad vendida:</label>
+      <input type="number" id="cantidadVenta" placeholder="Ej. 20">
+      <label for="fechaVenta">Fecha:</label>
+      <input type="date" id="fechaVenta">
+      <button onclick="guardarVenta()">Guardar venta</button>
+      <div class="output" id="resultadoVenta"></div>
+    </section>
+
+    <section>
+      <h2>Control de Inventario</h2>
+      <label for="productoInv">Producto:</label>
+      <select id="productoInv">
+        <option>Sirloin</option>
+        <option>Arrachera</option>
+        <option>Chuleta</option>
+        <option>Pollo entero</option>
+      </select>
+      <label for="stockActual">Stock actual:</label>
+      <input type="number" id="stockActual">
+      <label for="stockMinimo">Stock mínimo deseado:</label>
+      <input type="number" id="stockMinimo">
+      <button onclick="actualizarInventario()">Actualizar inventario</button>
+      <div class="output" id="resultadoInventario"></div>
+    </section>
+
+    <section>
+      <h2>Asistencia del Personal</h2>
+      <label for="nombreEmpleado">Nombre:</label>
+      <input type="text" id="nombreEmpleado">
+      <label for="horaEntrada">Hora de entrada:</label>
+      <input type="time" id="horaEntrada">
+      <label for="horaSalida">Hora de salida:</label>
+      <input type="time" id="horaSalida">
+      <button onclick="registrarAsistencia()">Registrar asistencia</button>
+      <div class="output" id="resultadoAsistencia"></div>
+    </section>
+
+    <section>
+      <h2>Reportes del sistema</h2>
+      <p>Puedes ver los reportes del sistema predictivo desarrollados en Google Colab:</p>
+      <button onclick="verReportes()">Ver reportes</button>
+    </section>
+  </main>
+
+  <script>
+    function guardarVenta() {
+      const producto = document.getElementById("productoVenta").value;
+      const cantidad = document.getElementById("cantidadVenta").value;
+      const fecha = document.getElementById("fechaVenta").value;
+      document.getElementById("resultadoVenta").innerText = `Venta guardada: ${cantidad} unidades de ${producto} en fecha ${fecha}`;
+    }
+
+    function actualizarInventario() {
+      const producto = document.getElementById("productoInv").value;
+      const stock = document.getElementById("stockActual").value;
+      const minimo = document.getElementById("stockMinimo").value;
+      document.getElementById("resultadoInventario").innerText = `Inventario actualizado: ${producto} tiene ${stock} unidades (stock mínimo: ${minimo})`;
+    }
+
+    function registrarAsistencia() {
+      const nombre = document.getElementById("nombreEmpleado").value;
+      const entrada = document.getElementById("horaEntrada").value;
+      const salida = document.getElementById("horaSalida").value;
+      document.getElementById("resultadoAsistencia").innerText = `Asistencia registrada para ${nombre}: Entrada a las ${entrada}, salida a las ${salida}`;
+    }
+
+    function verReportes() {
+      window.open("https://colab.research.google.com/drive/1qF99Ua9ZDRez2mL0T1bbpBJv0Vc2ztI7?usp=sharing", "_blank");
+    }
+  </script>
+</body>
+</html>
+
